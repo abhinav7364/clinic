@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
@@ -659,7 +659,7 @@ export function PatientEMRView({
 
 // ─── STANDALONE PATIENT RECORDS PAGE (WORKFLOW 1) ─────────────────────────────
 
-export default function StandalonePatientsPage() {
+function PatientsContent() {
   const searchParams = useSearchParams();
   const initialId = searchParams.get("id");
 
@@ -821,5 +821,19 @@ export default function StandalonePatientsPage() {
       )}
 
     </div>
+  );
+}
+
+export default function StandalonePatientsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center min-h-[400px]">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#2563EB]" />
+        </div>
+      }
+    >
+      <PatientsContent />
+    </Suspense>
   );
 }
