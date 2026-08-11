@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&display=swap");
+@import "tailwindcss";
+
+/* ─── Reset & Base ─────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+@theme inline {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Brand Colors */
+  --color-primary:       #2563EB;
+  --color-primary-dark:  #1D4ED8;
+  --color-primary-light: #DBEAFE;
+
+  --color-success:       #16A34A;
+  --color-success-light: #DCFCE7;
+  --color-warning:       #F59E0B;
+  --color-warning-light: #FEF3C7;
+  --color-danger:        #DC2626;
+  --color-danger-light:  #FEE2E2;
+  --color-info:          #0EA5E9;
+  --color-info-light:    #E0F2FE;
+
+  /* Neutrals */
+  --color-surface:       #FFFFFF;
+  --color-surface-alt:   #F8FAFC;
+  --color-border:        #E5E7EB;
+  --color-border-strong: #D1D5DB;
+  --color-text-primary:  #111827;
+  --color-text-secondary:#6B7280;
+  --color-text-muted:    #9CA3AF;
+
+  /* Sidebar */
+  --sidebar-width:       240px;
+  --topnav-height:       64px;
+}
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #111827;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar Styling ─────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
+
+/* ─── Animations ────────────────────────────────────────────────────────── */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes skeleton-shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 200ms ease-out;
+}
+
+.animate-slide-right {
+  animation: slideInRight 200ms ease-out;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 200ms ease-out;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #F3F4F6 25%, #E5E7EB 50%, #F3F4F6 75%);
+  background-size: 800px 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+  border-radius: 6px;
+}
+
+/* ─── Focus Styles ──────────────────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid #2563EB;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─── Link Reset ────────────────────────────────────────────────────────── */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── Card Base ─────────────────────────────────────────────────────────── */
+
+.card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.06), 0 1px 2px -1px rgba(0,0,0,0.04);
+  transition: box-shadow 150ms ease, transform 150ms ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px 0 rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.04);
+}
+
+/* ─── Status Badge Dot ──────────────────────────────────────────────────── */
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ─── Print Styles ──────────────────────────────────────────────────────── */
+
+@media print {
+  .no-print { display: none !important; }
+  body { font-size: 12px; }
+}
